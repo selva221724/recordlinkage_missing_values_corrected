@@ -53,7 +53,7 @@ class Exact(BaseCompareFeature):
                  right_on,
                  agree_value=1,
                  disagree_value=0,
-                 missing_value=0,
+                 missing_value=0.5,
                  label=None):
         super(Exact, self).__init__(left_on, right_on, label=label)
 
@@ -114,7 +114,7 @@ class String(BaseCompareFeature):
                  right_on,
                  method='levenshtein',
                  threshold=None,
-                 missing_value=0.0,
+                 missing_value=0.5,
                  label=None):
         super(String, self).__init__(left_on, right_on, label=label)
 
@@ -212,7 +212,7 @@ class Numeric(BaseCompareFeature):
                  offset=0.0,
                  scale=1.0,
                  origin=0.0,
-                 missing_value=0.0,
+                 missing_value=0.5,
                  label=None):
         super(Numeric, self).__init__(left_on, right_on, label=label)
 
@@ -296,7 +296,7 @@ class Geographic(BaseCompareFeature):
                  offset=0.0,
                  scale=1.0,
                  origin=0.0,
-                 missing_value=0.0,
+                 missing_value=0.5,
                  label=None):
         super(Geographic, self).__init__((left_on_lat, left_on_lng),
                                          (right_on_lat, right_on_lng),
@@ -366,7 +366,7 @@ class Date(BaseCompareFeature):
                  swap_month_day=0.5,
                  swap_months='default',
                  errors='coerce',
-                 missing_value=0.0,
+                 missing_value=0.5,
                  label=None):
         super(Date, self).__init__(left_on, right_on, label=label)
 
@@ -478,7 +478,7 @@ class VariableA(Variable):
     name = "variable"
     description = "Add a variable of the left dataframe to the features."
 
-    def __init__(self, on=None, missing_value=0.0, label=None):
+    def __init__(self, on=None, missing_value=0.5, label=None):
         super(VariableA, self).__init__(on,
                                         None,
                                         missing_value=missing_value,
@@ -503,7 +503,7 @@ class VariableB(Variable):
     name = "variable"
     description = "Add a variable of the right dataframe to the features."
 
-    def __init__(self, on=None, missing_value=0.0, label=None):
+    def __init__(self, on=None, missing_value=0.5, label=None):
         super(VariableB, self).__init__(None,
                                         on,
                                         missing_value=missing_value,
@@ -534,7 +534,7 @@ class Frequency(BaseCompareFeature):
                  left_on=None,
                  right_on=None,
                  normalise=True,
-                 missing_value=0.0,
+                 missing_value=0.5,
                  label=None):
         super(Frequency, self).__init__(left_on, right_on, label=label)
 
@@ -591,7 +591,7 @@ class FrequencyA(Frequency):
     name = "frequency"
     description = "Compute the frequency."
 
-    def __init__(self, on=None, normalise=True, missing_value=0.0, label=None):
+    def __init__(self, on=None, normalise=True, missing_value=0.5, label=None):
         super(FrequencyA, self).__init__(on,
                                          None,
                                          normalise=normalise,
@@ -617,7 +617,7 @@ class FrequencyB(Frequency):
     name = "frequency"
     description = "Compute the frequency."
 
-    def __init__(self, on=None, normalise=True, missing_value=0.0, label=None):
+    def __init__(self, on=None, normalise=True, missing_value=0.5, label=None):
         super(FrequencyB, self).__init__(None,
                                          on,
                                          normalise=normalise,
